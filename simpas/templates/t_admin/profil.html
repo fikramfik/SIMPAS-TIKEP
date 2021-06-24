@@ -1,0 +1,46 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Profil</h4>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5 mb-3">
+          <div class="card h-100 shadow wow bounceIn" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="card-header bg-warning">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+                Data Profil
+            </div>
+            <div class="card-body bg-info">
+                <table class="table caption-top text-white">
+                    <tbody>
+                        <tr>
+                            <th>Nama</th>
+                            <td>{{current_user.nama}}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{current_user.email}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nomor Hp</th>
+                            <td>{{current_user.nohp}}</td>
+                        </tr>
+                        <tr>
+                            <th>Role</th>
+                            <td>{{current_user.role}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-warning d-grid gap-2 col-4 mx-auto" href="{{url_for('radmin.updateprofil')}}">Update</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

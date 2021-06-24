@@ -1,0 +1,433 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+  <script LANGUAGE="JavaScript">
+      function tambahpasok() {
+        a = eval(form.pasokan_oba.value);
+        b = eval(form.pasokan_tidore.value);
+        c = a + b
+        form.total_pasok.value = c;
+      }
+      function tambahstok() {
+        a = eval(form.stok_oba.value);
+        b = eval(form.stok_tidore.value);
+        c = a + b
+        form.total_stok.value = c;
+      }
+  </script>
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Stok BAPOK</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Masukan Stok BAPOK
+            </div>
+            <div class="card-body">
+                <form method="POST" name="form">
+                    {{form.hidden_tag()}}
+                    <div class="row g-3">
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.tahun.label(class="form-control-label")}}
+                                {% if form.tahun.errors %}
+                                    {{form.tahun(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.tahun.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.tahun(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.bulan.label(class="form-control-label")}}
+                                {% if form.bulan.errors %}
+                                    {{form.bulan(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.bulan.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.bulan(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.minggu.label(class="form-control-label")}}
+                                {% if form.minggu.errors %}
+                                    {{form.minggu(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.minggu.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.minggu(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{form.kategoriid.label(class="form-control-label")}}
+                        {% if form.kategoriid.errors %}
+                            {{form.kategoriid(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.kategoriid.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.kategoriid(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.komoditiid.label(class="form-control-label")}}
+                        {% if form.komoditiid.errors %}
+                            {{form.komoditiid(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.komoditiid.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.komoditiid(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.pasokan_oba.label(class="form-control-label")}}
+                                {% if form.pasokan_oba.errors %}
+                                    {{form.pasokan_oba(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.pasokan_oba.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.pasokan_oba(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.pasokan_tidore.label(class="form-control-label")}}
+                                {% if form.pasokan_tidore.errors %}
+                                    {{form.pasokan_tidore(class="form-control is-invalid", onkeyup="tambahpasok()")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.pasokan_tidore.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.pasokan_tidore(class="form-control", onkeyup="tambahpasok()")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.total_pasok.label(class="form-control-label")}}
+                                {% if form.total_pasok.errors %}
+                                    {{form.total_pasok(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.total_pasok.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.total_pasok(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.stok_oba.label(class="form-control-label")}}
+                                {% if form.stok_oba.errors %}
+                                    {{form.stok_oba(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.stok_oba.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.stok_oba(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.stok_tidore.label(class="form-control-label")}}
+                                {% if form.stok_tidore.errors %}
+                                    {{form.stok_tidore(class="form-control is-invalid", onkeyup="tambahstok()")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.stok_tidore.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.stok_tidore(class="form-control", onkeyup="tambahstok()")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                {{form.total_stok.label(class="form-control-label")}}
+                                {% if form.total_stok.errors %}
+                                    {{form.total_stok(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.total_stok.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.total_stok(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{form.harga_jual.label(class="form-control-label")}}
+                                {% if form.harga_jual.errors %}
+                                    {{form.harga_jual(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.harga_jual.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.harga_jual(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                {{form.per.label(class="form-control-label")}}
+                                {% if form.per.errors %}
+                                    {{form.per(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.per.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.per(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                {{form.sat.label(class="form-control-label text-white")}}
+                                {% if form.sat.errors %}
+                                    {{form.sat(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.sat.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.sat(class="form-control", disabled=True)}}
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{form.asal_pasok.label(class="form-control-label")}}
+                        {% if form.asal_pasok.errors %}
+                            {{form.asal_pasok(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.asal_pasok.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.asal_pasok(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group mb-5">
+                        {{form.ket.label(class="form-control-label")}}
+                        {% if form.ket.errors %}
+                            {{form.ket(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.ket.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.ket(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group d-grid col-4 mx-auto">
+                        {{form.submit(class="btn btn-primary")}}
+                    </div>
+                </form>
+                <script>
+                    kategori_select = document.getElementById('kategoriid');
+                    komoditi_select = document.getElementById('komoditiid');
+                    sat_select = document.getElementById('sat');
+                
+                    kategori_select.onclick = function() {
+                        kategori = kategori_select.value;
+                        fetch('/stokkom/' + kategori).then(function(response) {
+                            response.json().then(function(data) {
+                                optionHTML = '';
+                                for (komoditi of data.komoditikategori) {
+                                    optionHTML += '<option value="' + komoditi.id_komoditi +'">' + komoditi.nama_komoditi + '</option>'
+                                }
+                                komoditi_select.innerHTML = optionHTML;
+                            });
+                        });
+                    }
+                    
+                    komoditi_select.onclick = function() {
+                        satuan = komoditi_select.value;
+                        fetch('/stokkomsat/' + satuan).then(function(response) {
+                            response.json().then(function(data) {
+                                optionHTML = '';
+                                for (komoditi of data.komoditisatuan) {
+                                    optionHTML += '<option value="' + komoditi.id_komoditi +'">' + komoditi.satuan + '</option>'
+                                }
+                                sat_select.innerHTML = optionHTML;
+                            });
+                        });
+                    }
+                </script>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Data Stok BAPOK
+            </div>
+            <div class="card-body">
+              <!-- Search -->
+              <!-- <form action="" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search pb-4">
+                {{form.hidden_tag()}}
+                <div class="input-group">
+                  <input type="text" class="form-control bg-light border-0 small" placeholder="Cari Untuk..."
+                      aria-label="Cari" aria-describedby="basic-addon2" name="tag" id="tag">
+                  <div class="input-group-append">
+                    <input class="btn btn-primary" type="submit" value="Cari">
+                  </div>
+                </div>
+              </form>
+              <strong style="padding-left: 20px;">Cari Untuk : {{ tag }}</strong> -->
+
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Tahun</th>
+                      <th>Bulan</th>
+                      <th>Minggu Ke-</th>
+                      <th>Kategori</th>
+                      <th>Komoditi</th>
+                      <th>Pasokan Oba</th>
+                      <th>Pasoakan Tidore</th>
+                      <th>Total Pasokan</th>
+                      <th>Stok Oba</th>
+                      <th>Stok Tidore</th>
+                      <th>Total Stok</th>
+                      <th>Harga Jual</th>
+                      <th colspan="2">Per</th>
+                      <th>Asal Pasok</th>
+                      <th>Ket</th>
+                      <th>Proses</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Bulan</th>
+                        <th>Minggu Ke-</th>
+                        <th>Kategori</th>
+                        <th>Komoditi</th>
+                        <th>Pasokan Oba</th>
+                        <th>Pasoakan Tidore</th>
+                        <th>Total Pasokan</th>
+                        <th>Stok Oba</th>
+                        <th>Stok Tidore</th>
+                        <th>Total Stok</th>
+                        <th>Harga Jual</th>
+                        <th colspan="2">Per</th>
+                        <th>Asal Pasok</th>
+                        <th>Ket</th>
+                        <th>Proses</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                      {% for dtstokbapok in stokbapok.items %}
+                      <tr>
+                        <td>{{dtstokbapok.tahun}}</td>
+                        <td>{{dtstokbapok.bulan}}</td>
+                        <td>{{dtstokbapok.minggu}}</td>
+                        <td>{{dtstokbapok.skategori.nama_jenis}}</td>
+                        <td>{{dtstokbapok.skomoditi.nama_komoditi}}</td>
+                        <td>{{dtstokbapok.pasokan_oba}}</td>
+                        <td>{{dtstokbapok.pasokan_tidore}}</td>
+                        <td>{{dtstokbapok.total_pasok}}</td>
+                        <td>{{dtstokbapok.stok_oba}}</td>
+                        <td>{{dtstokbapok.stok_tidore}}</td>
+                        <td>{{dtstokbapok.total_stok}}</td>
+                        <td>{{dtstokbapok.harga_jual}}</td>
+                        <td>{{dtstokbapok.per}}</td>
+                        <td>{{dtstokbapok.skomoditi.satuan}}</td>
+                        <td>{{dtstokbapok.asal_pasok}}</td>
+                        <td>{{dtstokbapok.ket}}</td>
+                        <td><a class="btn btn-sm btn-warning" href="{{url_for('radmin.update_stokbapok', ed_id_stokbapok=dtstokbapok.id_stokbapok)}}">Edit</a>  <a class="btn btn-sm btn-danger" href="/hapusstokbapok/{{dtstokbapok.id_stokbapok}}" onclick="return confirm('Yakin data akan di hapus')">Hapus</a></td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    {% if stokbapok.has_prev %}
+                      <li class="page-item"><a class="page-link" href="{{ url_for('radmin.stokbapok', page=stokbapok.prev_num)}}">Previous</a></li>
+                    {% else %}
+                      <li class="page-item disabled"><a class="page-link">Previous</a>
+                    {% endif %}
+                      </li>
+  
+                    {% for page in stokbapok.iter_pages(left_edge=3, right_edge=3) %}
+                    {% if page %}
+                        {% if page==stokbapok.page %}
+                        <li class="page-item active"><a class="page-link" href="{{ url_for('radmin.stokbapok', page=page)}}">{{ page }}</a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('radmin.stokbapok', page=page)}}">{{ page }}</a></li>
+                        {% endif %}
+                    {% else %}
+                    <li class="page-item disabled" id="example_ellipsis"><a class="page-link" href="#">...</a></li>
+                    {% endif %}
+                    {% endfor %}
+  
+                    {% if stokbapok.has_next %}
+                    <li class="page-item"><a class="page-link" href="{{ url_for('radmin.stokbapok', page=stokbapok.next_num)}}">Next</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                    {% endif %}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

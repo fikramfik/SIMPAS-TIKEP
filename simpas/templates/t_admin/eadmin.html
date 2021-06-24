@@ -1,0 +1,84 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Admin</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Ubah Admin
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{form.hidden_tag()}}
+                    <div class="form-group">
+                        {{form.nama.label(class="form-control-label")}}
+                        {% if form.nama.errors %}
+                            {{form.nama(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.nama.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.nama(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.email.label(class="form-control-label")}}
+                        {% if form.email.errors %}
+                            {{form.email(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.email.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.email(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.nohp.label(class="form-control-label")}}
+                        {% if form.nohp.errors %}
+                            {{form.nohp(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.nohp.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.nohp(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group mb-5">
+                        {{form.role.label(class="form-control-label")}}
+                        {% if form.role.errors %}
+                            {{form.role(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.role.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.role(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group d-grid gap-2 col-4 mx-auto">
+                        {{form.submit(class="btn btn-warning")}}
+                        <a class="btn btn-secondary" href="{{url_for('radmin.admin')}}">Kembali</a>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

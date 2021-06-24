@@ -1,0 +1,66 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Rekap Harga BAPOKTING</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <div class="card">
+          <div class="card-header">
+            <span><i class="bi bi-table me-2"></i></span> Data Harga BAPOKTING
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="example" class="table table-striped data-table" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tahun</th>
+                    <th>Bulan</th>
+                    <th>Minggu Ke</th>
+                    <th>Kategori</th>
+                    <th>Komoditi</th>
+                    <th>Harga</th>
+                    <th>Ket</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tahun</th>
+                    <th>Bulan</th>
+                    <th>Minggu Ke</th>
+                    <th>Kategori</th>
+                    <th>Komoditi</th>
+                    <th>Harga</th>
+                    <th>Ket</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  {% for dtrhargakomoditi in data%}
+                  <tr>
+                    <td>{{dtrhargakomoditi.id_hargakom}}</td>
+                    <td>{{dtrhargakomoditi.tahun}}</td>
+                    <td>{{dtrhargakomoditi.bulan}}</td>
+                    <td>{{dtrhargakomoditi.minggu}}</td>
+                    <td>{{dtrhargakomoditi.hkategori.nama_jenis}}</td>
+                    <td>{{dtrhargakomoditi.hkomoditi.nama_komoditi}}</td>
+                    <td>{{dtrhargakomoditi.harga}}</td>
+                    <td>{{dtrhargakomoditi.ket}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>  
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Update Profil</h4>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5 mb-3">
+          <div class="card h-100 shadow wow bounceIn" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="card-header bg-info">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Ubah Data Profil
+            </div>
+            <div class="card-body bg-warning text-white">
+                <form method="POST">
+                    {{form.hidden_tag()}}
+                    <div class="form-group">
+                        {{form.nama.label(class="form-control-label")}}
+                        {% if form.nama.errors %}
+                            {{form.nama(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.nama.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.nama(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.email.label(class="form-control-label")}}
+                        {% if form.email.errors %}
+                            {{form.email(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.email.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.email(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group mb-5">
+                        {{form.nohp.label(class="form-control-label")}}
+                        {% if form.nohp.errors %}
+                            {{form.nohp(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.nohp.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.nohp(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group d-grid col-4 mx-auto">
+                        {{form.submit(class="btn btn-info mb-3")}}
+                        <a class="btn btn-secondary" href="{{url_for('radmin.profil')}}">Kembali</a>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

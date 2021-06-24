@@ -1,0 +1,140 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Harga BAPOKTING</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Ubah Harga BAPOKTING
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{form.hidden_tag()}}
+                    <div class="form-group">
+                        {{form.tahun.label(class="form-control-label")}}
+                        {% if form.tahun.errors %}
+                            {{form.tahun(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.tahun.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.tahun(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.bulan.label(class="form-control-label")}}
+                        {% if form.bulan.errors %}
+                            {{form.bulan(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.bulan.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.bulan(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.minggu.label(class="form-control-label")}}
+                        {% if form.minggu.errors %}
+                            {{form.minggu(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.minggu.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.minggu(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.kategoriid.label(class="form-control-label")}}
+                        {% if form.kategoriid.errors %}
+                            {{form.kategoriid(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.kategoriid.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.kategoriid(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.komoditiid.label(class="form-control-label")}}
+                        {% if form.komoditiid.errors %}
+                            {{form.komoditiid(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.komoditiid.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.komoditiid(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.harga.label(class="form-control-label")}}
+                        {% if form.harga.errors %}
+                            {{form.harga(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.harga.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.harga(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group mb-5">
+                        {{form.ket.label(class="form-control-label")}}
+                        {% if form.ket.errors %}
+                            {{form.ket(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.ket.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.ket(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group d-grid gap-2 col-4 mx-auto">
+                        {{form.submit(class="btn btn-warning")}}
+                        <a class="btn btn-secondary" href="{{url_for('radmin.hargakomoditi')}}">Kembali</a>
+                    </div>
+                </form>
+                <script>
+                    kategori_select = document.getElementById('kategoriid');
+                    komoditi_select = document.getElementById('komoditiid');
+                
+                    kategori_select.onclick = function() {
+                        kategori = kategori_select.value;
+                        fetch('/hargakomkat/' + kategori).then(function(response) {
+                            response.json().then(function(data) {
+                                optionHTML = '';
+                                for (komoditi of data.komoditikategori) {
+                                    optionHTML += '<option value="' + komoditi.id_komoditi +'">' + komoditi.nama_komoditi + '</option>'
+                                }
+                                komoditi_select.innerHTML = optionHTML;
+                            });
+                        });
+                    }
+                </script>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

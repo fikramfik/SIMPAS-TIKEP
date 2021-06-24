@@ -1,0 +1,240 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Harga BAPOKTING</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Masukan Harga BAPOKTING
+            </div>
+            <div class="card-body">
+              <form method="POST">
+                {{form.hidden_tag()}}
+                <div class="row g-3">
+                  <div class="col-md">
+                    <div class="form-group">
+                        {{form.tahun.label(class="form-control-label")}}
+                        {% if form.tahun.errors %}
+                            {{form.tahun(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.tahun.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.tahun(class="form-control")}}
+                        {%endif%}
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="form-group">
+                        {{form.bulan.label(class="form-control-label")}}
+                        {% if form.bulan.errors %}
+                            {{form.bulan(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.bulan.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.bulan(class="form-control")}}
+                        {%endif%}
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <div class="form-group">
+                        {{form.minggu.label(class="form-control-label")}}
+                        {% if form.minggu.errors %}
+                            {{form.minggu(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.minggu.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.minggu(class="form-control")}}
+                        {%endif%}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  {{form.kategoriid.label(class="form-control-label")}}
+                  {% if form.kategoriid.errors %}
+                      {{form.kategoriid(class="form-control is-invalid")}}
+                      <div class="invalid-feedback">
+                          {%for error in form.kategoriid.errors %}
+                          <span>{{error}}</span>
+                          {% endfor %}
+                      </div>
+                  {%else%}
+                      {{form.kategoriid(class="form-control")}}
+                  {%endif%}
+                </div>
+                <div class="form-group">
+                  {{form.komoditiid.label(class="form-control-label")}}
+                  {% if form.komoditiid.errors %}
+                      {{form.komoditiid(class="form-control is-invalid")}}
+                      <div class="invalid-feedback">
+                          {%for error in form.komoditiid.errors %}
+                          <span>{{error}}</span>
+                          {% endfor %}
+                      </div>
+                  {%else%}
+                      {{form.komoditiid(class="form-control")}}
+                  {%endif%}
+                </div>
+                <div class="form-group">
+                    {{form.harga.label(class="form-control-label")}}
+                    {% if form.harga.errors %}
+                        {{form.harga(class="form-control is-invalid")}}
+                        <div class="invalid-feedback">
+                            {%for error in form.harga.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {%else%}
+                        {{form.harga(class="form-control")}}
+                    {%endif%}
+                </div>
+                <div class="form-group mb-5">
+                    {{form.ket.label(class="form-control-label")}}
+                    {% if form.ket.errors %}
+                        {{form.ket(class="form-control is-invalid")}}
+                        <div class="invalid-feedback">
+                            {%for error in form.ket.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {%else%}
+                        {{form.ket(class="form-control")}}
+                    {%endif%}
+                </div>
+                <div class="form-group d-grid col-4 mx-auto">
+                    {{form.submit(class="btn btn-primary")}}
+                </div>
+              </form>
+              <script>
+                kategori_select = document.getElementById('kategoriid');
+                komoditi_select = document.getElementById('komoditiid');
+            
+                kategori_select.onclick = function() {
+                    kategori = kategori_select.value;
+                    fetch('/hargakomkat/' + kategori).then(function(response) {
+                        response.json().then(function(data) {
+                            optionHTML = '';
+                            for (komoditi of data.komoditikategori) {
+                                optionHTML += '<option value="' + komoditi.id_komoditi +'">' + komoditi.nama_komoditi + '</option>'
+                            }
+                            komoditi_select.innerHTML = optionHTML;
+                        });
+                    });
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Data Harga BAPOKTING
+            </div>
+            <div class="card-body">
+              <!-- Search -->
+              <!-- <form action="" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search pb-4">
+                {{form.hidden_tag()}}
+                <div class="input-group">
+                  <input type="text" class="form-control bg-light border-0 small" placeholder="Cari Untuk..."
+                      aria-label="Cari" aria-describedby="basic-addon2" name="tag" id="tag">
+                  <div class="input-group-append">
+                    <input class="btn btn-primary" type="submit" value="Cari">
+                  </div>
+                </div>
+              </form>
+              <strong style="padding-left: 20px;">Cari Untuk : {{ tag }}</strong> -->
+
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Tahun</th>
+                      <th>Bulan</th>
+                      <th>Minggu Ke-</th>
+                      <th>Kategori</th>
+                      <th>Komoditi</th>
+                      <th>Harga</th>
+                      <th>Ket</th>
+                      <th>Proses</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Tahun</th>
+                      <th>Bulan</th>
+                      <th>Minggu Ke-</th>
+                      <th>Kategori</th>
+                      <th>Komoditi</th>
+                      <th>Harga</th>
+                      <th>Ket</th>
+                      <th>Proses</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                      {% for dthargakomoditi in hargakomoditi.items %}
+                      <tr>
+                        <td>{{dthargakomoditi.tahun}}</td>
+                        <td>{{dthargakomoditi.bulan}}</td>
+                        <td>{{dthargakomoditi.minggu}}</td>
+                        <td>{{dthargakomoditi.hkategori.nama_jenis}}</td>
+                        <td>{{dthargakomoditi.hkomoditi.nama_komoditi}}</td>
+                        <td>{{dthargakomoditi.harga}}</td>
+                        <td>{{dthargakomoditi.ket}}</td>
+                        <td><a class="btn btn-sm btn-warning" href="{{url_for('radmin.update_hargakomoditi', ed_id_hargakom=dthargakomoditi.id_hargakom)}}">Edit</a>  <a class="btn btn-sm btn-danger" href="/hapushargakomoditi/{{dthargakomoditi.id_hargakom}}" onclick="return confirm('Yakin data akan di hapus')">Hapus</a></td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    {% if hargakomoditi.has_prev %}
+                      <li class="page-item"><a class="page-link" href="{{ url_for('radmin.hargakomoditi', page=hargakomoditi.prev_num)}}">Previous</a></li>
+                    {% else %}
+                      <li class="page-item disabled"><a class="page-link">Previous</a>
+                    {% endif %}
+                      </li>
+  
+                    {% for page in hargakomoditi.iter_pages(left_edge=3, right_edge=3) %}
+                    {% if page %}
+                        {% if page==hargakomoditi.page %}
+                        <li class="page-item active"><a class="page-link" href="{{ url_for('radmin.hargakomoditi', page=page)}}">{{ page }}</a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('radmin.hargakomoditi', page=page)}}">{{ page }}</a></li>
+                        {% endif %}
+                    {% else %}
+                    <li class="page-item disabled" id="example_ellipsis"><a class="page-link" href="#">...</a></li>
+                    {% endif %}
+                    {% endfor %}
+  
+                    {% if hargakomoditi.has_next %}
+                    <li class="page-item"><a class="page-link" href="{{ url_for('radmin.hargakomoditi', page=hargakomoditi.next_num)}}">Next</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                    {% endif %}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

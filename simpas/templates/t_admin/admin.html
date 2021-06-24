@@ -1,0 +1,193 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Admin</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Masukan Admin
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{form.hidden_tag()}}
+                    <div class="form-group">
+                        {{form.nama.label(class="form-control-label")}}
+                        {% if form.nama.errors %}
+                            {{form.nama(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.nama.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.nama(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.email.label(class="form-control-label")}}
+                        {% if form.email.errors %}
+                            {{form.email(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.email.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.email(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.nohp.label(class="form-control-label")}}
+                        {% if form.nohp.errors %}
+                            {{form.nohp(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.nohp.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.nohp(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.role.label(class="form-control-label")}}
+                        {% if form.role.errors %}
+                            {{form.role(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.role.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.role(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.password.label(class="form-control-label")}}
+                        {% if form.password.errors %}
+                            {{form.password(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.password.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.password(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group mb-5">
+                        {{form.konf_pass.label(class="form-control-label")}}
+                        {% if form.konf_pass.errors %}
+                            {{form.konf_pass(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.konf_pass.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.konf_pass(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group d-grid col-4 mx-auto">
+                        {{form.submit(class="btn btn-primary")}}
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 mb-3">
+          <div class="card h-100">
+            <div class="card-header">
+              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              Data Admin
+            </div>
+            <div class="card-body">
+               <!-- Search -->
+                <form action="" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search pb-4">
+                    {{form.hidden_tag()}}
+                    <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Cari Untuk..."
+                        aria-label="Cari" aria-describedby="basic-addon2" name="tag" id="tag">
+                    <div class="input-group-append">
+                        <input class="btn btn-primary" type="submit" value="Cari">
+                    </div>
+                    </div>
+                </form>
+                <strong style="padding-left: 20px;">Cari Untuk : {{ tag }}</strong>
+  
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>No HP</th>
+                        <th>Role</th>
+                        <th>Proses</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>No HP</th>
+                        <th>Role</th>
+                        <th>Proses</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for dtadmin in admin.items %}
+                        <tr>
+                            <td>{{dtadmin.nama}}</td>
+                            <td>{{dtadmin.email}}</td>
+                            <td>{{dtadmin.nohp}}</td>
+                            <td>{{dtadmin.role}}</td>
+                            <td><a class="btn btn-sm btn-warning" href="{{url_for('radmin.update_admin', ed_id=dtadmin.id)}}">Edit</a>  <a class="btn btn-sm btn-danger" href="/hapusadmin/{{dtadmin.id}}" onclick="return confirm('Yakin data akan di hapus')">Hapus</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if admin.has_prev %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('radmin.admin', page=admin.prev_num)}}">Previous</a></li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link">Previous</a>
+                        {% endif %}
+                        </li>
+    
+                        {% for page in admin.iter_pages(left_edge=3, right_edge=3) %}
+                        {% if page %}
+                            {% if page==admin.page %}
+                            <li class="page-item active"><a class="page-link" href="{{ url_for('radmin.admin', page=page)}}">{{ page }}</a></li>
+                            {% else %}
+                            <li class="page-item"><a class="page-link" href="{{ url_for('radmin.admin', page=page)}}">{{ page }}</a></li>
+                            {% endif %}
+                        {% else %}
+                        <li class="page-item disabled" id="example_ellipsis"><a class="page-link" href="#">...</a></li>
+                        {% endif %}
+                        {% endfor %}
+    
+                        {% if admin.has_next %}
+                        <li class="page-item"><a class="page-link" href="{{ url_for('radmin.admin', page=admin.next_num)}}">Next</a></li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                        {% endif %}
+                    </ul>
+                    </nav>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

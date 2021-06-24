@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{url_for('static', filename='s_admin/login/bs5/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='s_admin/login/css/form.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='s_admin/login/css/body.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='s_admin/login/css/checkbox.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='s_admin/login/icon/css/all.min.css')}}">
+
+    <title>Daftar - Admin</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <!-- Form Login -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-10 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5 rounded">
+                    <div class="card-body p-0">
+                        <div class="row">
+
+                            <!-- form control -->
+                            <div class="col-sm bg-cover2 position-relative">
+                                <div class="position-relative">
+
+                                    <form method="POST" name="myForm" action="#">
+                                        <div class="row justify-content-center mt-5">
+
+                                            <div class="text-center mt-5">
+                                                <h1 class="h2 judul text-bold">BUAT AKUN</h1>
+                                            </div>
+
+                                            <div class="col-lg-10 col-md-8 mt-5">
+                                                <div class="input-container">
+                                                    <i class="far fa-user icon"></i>
+                                                    <input class="input-field" type="text" placeholder="Username"
+                                                        name="usrnm" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-10 col-md-8">
+                                                <div class="input-container">
+                                                    <i class="far fa-envelope icon"></i>
+                                                    <input class="input-field" type="email" placeholder="Email"
+                                                        name="email" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-10 col-md-8">
+                                                <div class="input-container">
+                                                    <i class="far fa-flag icon"></i>
+                                                    <input class="input-field" type="text" placeholder="Country"
+                                                        name="country" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-10 col-md-8">
+                                                <div class="input-container">
+                                                    <i class="fas fa-phone icon"></i>
+                                                    <input class="input-field" type="text" placeholder="Phone"
+                                                        name="phone" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-10 col-md-8">
+                                                <div class="input-container">
+                                                    <i class="fas fa-lock icon"></i>
+                                                    <input class="input-field" type="password" placeholder="Password"
+                                                        name="pwd" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-9 col-md-7">
+                                                <div class="d-flex">
+                                                    <div class="form-group my-4">
+                                                        <label class="container font-check">Lorem ipsum dolor sit amet,
+                                                            consectetuer
+                                                            adipiscing elit, sed
+                                                            <input type="checkbox">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-10 col-md-8">
+                                                <button type="submit" class="btn btn-red rounded-pill shadow mb-4"><i
+                                                        class="fas fa-paper-plane"></i>
+                                                    DAFTAR</button>
+                                            </div>
+
+                                            <div class="col-lg-12 mb-5">
+                                                <div class="d-flex justify-content-center">
+                                                    <span class="me-2 text-white">Sudah Punya Akun?</span><a
+                                                        href="{{url_for('radmin.login')}}" class="link">Masuk</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- cover -->
+                            <div class="col-sm d-none d-lg-block position-relative bg-ungu">
+                                <img src="{{url_for('static', filename='s_admin/login/assets/bg-vector.png')}}" width="100%"
+                                    class="position-absolute bottom-0 end-0 cover1">
+                                <div class="p-5 position-relative">
+                                    <div class="text-center mt-4 ">
+                                        <h1 class="display-3 judul text-bold">INFO <br> PASAR</h1>
+                                    </div>
+                                    <center>
+                                        <img src="{{url_for('static', filename='s_admin/login/assets/konten-vector.png')}}" width="100%">
+                                    </center>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="{{url_for('static', filename='s_admin/login/bs5/dist/js/bootstrap.bundle.js')}}"></script>
+
+</body>
+
+</html>

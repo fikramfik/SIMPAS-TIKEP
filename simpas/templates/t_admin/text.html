@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='s_admin/css/bootstrap.min.css')}}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="{{url_for('static', filename='s_admin/css/dataTables.bootstrap5.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='s_admin/css/style.css')}}" />
+<title>Belajar</title>
+ <!-- <script LANGUAGE="JavaScript">
+ function cek(){
+ if(form.angka1.value == "" || form.angka2.value == ""){
+ alert("data kosong"); //jika angka kosong maka pesan akan tampil
+ exit;
+ }
+ }
+ function tambah() {
+  //panggil function cek
+ a=eval(form.angka1.value); //mengisi variabel a dengan isi dari input name angka1
+ b=eval(form.angka2.value); //mengisi variabel b dengan isi dari input name angka2
+ c=a+b //menjumlahkan kedua variabel
+ form.total.value = c; //memberikan hasil penjumlahan ke input name total
+ }
+ function kali() {
+ cek();
+ a=eval(form.angka1.value);
+ b=eval(form.angka2.value);
+ c=a*b
+ form.total.value = c;
+ }
+ function kurang() {
+ cek();
+ a=eval(form.angka1.value);
+ b=eval(form.angka2.value);
+ c=a-b
+ form.total.value = c;
+ }
+ function bagi() {
+ cek();
+ a=eval(form.angka1.value);
+ b=eval(form.angka2.value);
+ c=a/b
+ form.total.value = c;
+ }
+ function reset() {
+ form.angka1.value="";
+ form.angka2.value="";
+ form.total.value = "";
+ }
+ </script> -->
+</head>
+<body>
+ <!-- <form name="form">
+ Angka1
+ <input type=text name="angka1" size=3><br><br>
+ Angka2
+ <input name="angka2" type="text" size="3" onkeyup="tambah()" /><br>
+ <br>
+ Hasil <input type="text" value="" name="total" size="9">
+ <br><br> -->
+ <!-- membuat event ketika tombol di klik maka memanggil function javascript -->
+ <!-- <input type=button name=submit onclick="tambah()" value="+">
+ <input type=button name=submit onclick="kali()" value="X">
+ <input type=button name=submit onclick="bagi()" value="/">
+ <input type=button name=submit onclick="kurang()" value="-">
+ <input type=button name=submit onclick="reset()" value="Reset">
+ </form> -->
+
+ <!-- {% for dtharga in data_harga %}
+
+{{dtharga.tahun}}<br>
+{{dtharga.bulan}}<br>
+{{dtharga.minggu}}<br>
+{{dtharga.hkomoditi.nama_komoditi}}<br>
+{{dtharga.harga}}<br>
+{{dtharga.ket}}<br>
+
+ {% endfor %} -->
+<div class="container">
+    <form method="POST">
+       {{form.hidden_tag()}}
+       {{form.csrf_token}}
+       <div class="form-group">
+           {{form.kategori.label(class="form-control-label")}}
+           {% if form.kategori.errors %}
+               {{form.kategori(class="form-control is-invalid")}}
+               <div class="invalid-feedback">
+                   {%for error in form.kategori.errors %}
+                   <span>{{error}}</span>
+                   {% endfor %}
+               </div>
+           {%else%}
+               {{form.kategori(class="form-control")}}
+           {%endif%}
+       </div>
+       <div class="form-group">
+           {{form.komoditi.label(class="form-control-label")}}
+           {% if form.komoditi.errors %}
+               {{form.komoditi(class="form-control is-invalid")}}
+               <div class="invalid-feedback">
+                   {%for error in form.komoditi.errors %}
+                   <span>{{error}}</span>
+                   {% endfor %}
+               </div>
+           {%else%}
+               {{form.komoditi(class="form-control")}}
+           {%endif%}
+       </div>
+       <div class="form-group d-grid col-4 mx-auto">
+           {{form.submit(class="btn btn-primary")}}
+       </div>
+   </form>
+</div>
+<script>
+    kategori_select = document.getElementById('kategori');
+    komoditi_select = document.getElementById('komoditi');
+
+    kategori_select.onclick = function() {
+        kategori = kategori_select.value;
+        fetch('/komodititest/' + kategori).then(function(response) {
+            response.json().then(function(data) {
+                optionHTML = '';
+                for (komoditi of data.komoditikategori) {
+                    optionHTML += '<option value="' + komoditi.id_komoditi +'">' + komoditi.nama_komoditi + '</option>'
+                }
+                komoditi_select.innerHTML = optionHTML;
+            });
+        });
+    }
+</script>
+</body>
+</html>

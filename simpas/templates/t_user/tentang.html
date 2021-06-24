@@ -1,0 +1,54 @@
+{% extends "t_user/base.html" %}
+
+{% block konten %}
+
+        <div class="container br">
+
+          <br><br><br>
+      
+          <div class="row mt-5 mb-5">
+      
+              <div class="col-lg-12 gambar">
+                  <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                      <img src="{{url_for('static', filename='img/ut.png')}}" width="100%">
+                  </div>
+              </div>
+      
+              <div class="col-sm-12 position-relative p-4">
+      
+                  <div class="position-absolute top-0 end-0">
+                      <div class="left-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                          <img src="{{url_for('static', filename='img/ut.png')}}" class="img">
+                      </div>
+                  </div>
+                  <div class="left-image wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s">
+                      <h1 class="display-1 text-truncate tebel-sedang judul1">Informasi</h1>
+                      <h1 class="display-1 text-truncate tebel-sedang judul2">Pasar</h1>
+                  </div>
+                  <div class="left-image wow fadeInLeft" data-wow-duration="3s" data-wow-delay="0.5s">
+                      <div class="hr"></div>
+                  </div>
+                  <div class="left-image wow fadeInLeft" data-wow-duration="2.2s" data-wow-delay="0.5s">
+                      <div class="desc mt-4">
+                          <p>Jangan sampai ketinggalan Informasi Terbaru
+                              dari <strong class="judul1">Bidang Fasilitasi dan Sarana Pasar,</strong> 
+                              Harga dan Stok <strong class="judul2">BAPOKTING</strong> Kota Tidore
+                              Kepulauan, yang akan di <strong class="judul2">UPDATE SETIAP MINGGU</strong> 
+                              pada <strong class="judul1">HARI JUMAT.</strong> </p>
+                      </div>
+                  </div>
+                  <div class="left-image wow fadeInLeft" data-wow-duration="2.7s" data-wow-delay="0.5s">
+                      <div class="mt-5">
+                          <a href="{{url_for('ruser.infopasar')}}" class="button rounded-pill shadow tebel-sedang">Info Lengkap</a>
+                      </div>
+                  </div>
+      
+                  <br>
+      
+              </div>
+      
+          </div>
+      
+      </div>
+
+{% endblock %}

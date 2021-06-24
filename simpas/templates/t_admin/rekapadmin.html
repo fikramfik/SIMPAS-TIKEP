@@ -1,0 +1,57 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Rekap Admin</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <div class="card">
+          <div class="card-header">
+            <span><i class="bi bi-table me-2"></i></span> Data Admin
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="example" class="table table-striped data-table" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>No HP</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>No HP</th>
+                    <th>Role</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  {% for dtradmin in data%}
+                  <tr>
+                    <td>{{dtradmin.id}}</td>
+                    <td>{{dtradmin.nama}}</td>
+                    <td>{{dtradmin.email}}</td>
+                    <td>{{dtradmin.nohp}}</td>
+                    <td>{{dtradmin.role}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>  
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

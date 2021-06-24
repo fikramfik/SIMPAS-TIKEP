@@ -1,0 +1,232 @@
+{% extends "t_user/base.html" %}
+
+{% block konten %}
+
+<div class="br">
+
+  <br><br><br><br><br>
+  <div class="card" style="border: none;">
+    <img src="{{url_for('static', filename='img/bg-4.png')}}" width="100%" height="1500px" class="">
+    <!-- <img src="{{url_for('static', filename='img/bg-2.png')}}" class="img-fluid"> -->
+    <div class="card-img-overlay">
+      <div class="left-image wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s">
+        <h1 class="display-6 text-truncate tebel-sedang judul1 text-center">INFO HARGA DAN STOK BAPOKTING</h1>
+      </div>
+      <div class="left-image wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.5s">
+        <h1 class="display-6 text-truncate tebel-sedang judul2 text-center">KOTA TIDORE KEPULAUAN</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3 wow fadeInLeft" data-wow-duration="3s" data-wow-delay="0.5s">
+          <div class="table bg-light">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr class="bg-info">
+                  <th colspan="5" class="text-center">HARGA BARANG KEBUTUHAN POKOK</th>
+                </tr>
+              </thead>
+              <thead>
+                <tr class="bg-info">
+                  <th>Jenis Barang</th>
+                  <th>Satuan</th>
+                  <th colspan="2">Harga Satuan</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dtharga in infohargakp %}
+                <tr>
+                  <td>{{dtharga.hkomoditi.nama_komoditi}}</td>
+                  <td>{{dtharga.hkomoditi.satuan}}</td>
+                  <td>Rp</td>
+                  <td>{{dtharga.harga}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <thead>
+                <tr class="bg-info">
+                  <th colspan="5" class="text-center">HARGA HASIL BUMI</th>
+                </tr>
+              </thead>
+              <thead>
+                <tr class="bg-info">
+                  <th>Jenis Barang</th>
+                  <th>Satuan</th>
+                  <th colspan="2">Harga Satuan</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dtharga in infohargahb %}
+                <tr>
+                  <td>{{dtharga.hkomoditi.nama_komoditi}}</td>
+                  <td>{{dtharga.hkomoditi.satuan}}</td>
+                  <td>Rp</td>
+                  <td>{{dtharga.harga}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <thead>
+                <tr class="bg-info">
+                  <th colspan="5" class="text-center">HARGA BARANG PENTING</th>
+                </tr>
+              </thead>
+              <thead>
+                <tr class="bg-info">
+                  <th>Jenis Barang</th>
+                  <th>Satuan</th>
+                  <th colspan="2">Harga Satuan</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dtharga in infohargabp %}
+                <tr>
+                  <td>{{dtharga.hkomoditi.nama_komoditi}}</td>
+                  <td>{{dtharga.hkomoditi.satuan}}</td>
+                  <td>Rp</td>
+                  <td>{{dtharga.harga}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-8 mb-3 wow fadeInRight" data-wow-duration="3s" data-wo-delay="0.5s"">
+          <div class="table bg-light">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr class="bg-warning">
+                  <th colspan="12" class="text-center">STOK BAPOK</th>
+                </tr>
+              </thead>
+              <thead>
+                <tr class="bg-warning">
+                  <th>Jenis Barang</th>
+                  <th>Pasok Oba (Ton)</th>
+                  <th>Pasok Tidore (Ton)</th>
+                  <th>Total Pasok</th>
+                  <th>Stok Obak (Ton)</th>
+                  <th>Stok Tidore (Ton)</th>
+                  <th>Total Stok</th>
+                  <th>Harga Jual</th>
+                  <th colspan="2">Per</th>
+                  <th>Asal Pasok</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dtstok in infostokkp %}
+                <tr>
+                  <td>{{dtstok.skomoditi.nama_komoditi}}</td>
+                  <td>{{dtstok.pasokan_oba}}</td>
+                  <td>{{dtstok.pasokan_tidore}}</td>
+                  <td>{{dtstok.total_pasok}}</td>
+                  <td>{{dtstok.stok_oba}}</td>
+                  <td>{{dtstok.stok_tidore}}</td>
+                  <td>{{dtstok.total_stok}}</td>
+                  <td>{{dtstok.harga_jual}}</td>
+                  <td>{{dtstok.per}}</td>
+                  <td>{{dtstok.skomoditi.satuan}}</td>
+                  <td>{{dtstok.asal_pasok}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div class="table bg-light table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr class="bg-warning">
+                  <th colspan="12" class="text-center">STOK BARANG PENTING</th>
+                </tr>
+              </thead>
+              <thead>
+                <tr class="bg-warning">
+                  <th>Jenis Barang</th>
+                  <th>Pasok Oba (Ton)</th>
+                  <th>Pasok Tidore (Ton)</th>
+                  <th>Total Pasok</th>
+                  <th>Stok Obak (Ton)</th>
+                  <th>Stok Tidore (Ton)</th>
+                  <th>Total Stok</th>
+                  <th>Harga Jual</th>
+                  <th colspan="2">Per</th>
+                  <th>Asal Pasok</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dtstok in infostokbp %}
+                <tr>
+                  <td>{{dtstok.skomoditi.nama_komoditi}}</td>
+                  <td>{{dtstok.pasokan_oba}}</td>
+                  <td>{{dtstok.pasokan_tidore}}</td>
+                  <td>{{dtstok.total_pasok}}</td>
+                  <td>{{dtstok.stok_oba}}</td>
+                  <td>{{dtstok.stok_tidore}}</td>
+                  <td>{{dtstok.total_stok}}</td>
+                  <td>{{dtstok.harga_jual}}</td>
+                  <td>{{dtstok.per}}</td>
+                  <td>{{dtstok.skomoditi.satuan}}</td>
+                  <td>{{dtstok.asal_pasok}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div class="table bg-light table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr class="bg-warning">
+                  <th colspan="12" class="text-center">STOK HASIL BUMI</th>
+                </tr>
+              </thead>
+              <thead>
+                <tr class="bg-warning">
+                  <th>Jenis Barang</th>
+                  <th>Pasok Oba (Ton)</th>
+                  <th>Pasok Tidore (Ton)</th>
+                  <th>Total Pasok</th>
+                  <th>Stok Obak (Ton)</th>
+                  <th>Stok Tidore (Ton)</th>
+                  <th>Total Stok</th>
+                  <th>Harga Jual</th>
+                  <th colspan="2">Per</th>
+                  <th>Asal Pasok</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dtstok in infostokhb %}
+                <tr>
+                  <td>{{dtstok.skomoditi.nama_komoditi}}</td>
+                  <td>{{dtstok.pasokan_oba}}</td>
+                  <td>{{dtstok.pasokan_tidore}}</td>
+                  <td>{{dtstok.total_pasok}}</td>
+                  <td>{{dtstok.stok_oba}}</td>
+                  <td>{{dtstok.stok_tidore}}</td>
+                  <td>{{dtstok.total_stok}}</td>
+                  <td>{{dtstok.harga_jual}}</td>
+                  <td>{{dtstok.per}}</td>
+                  <td>{{dtstok.skomoditi.satuan}}</td>
+                  <td>{{dtstok.asal_pasok}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br>
+<div class=" container-fluid bg-warning">
+  <marquee behavior="alternate" direction="">
+      <strong class="judul1">Jangan sampai ketinggalan Informasi Terbaru dari Bidang Fasilitasi dan Sarana Pasar</strong></marquee>
+  <marquee behavior="" direction="">
+      <strong class="judul1">Harga dan Stok BAPOKTING Kota Tidore Kepulauan, yang akan di UPDATE SETIAP MINGGU pada HARI JUMAT</strong>
+  </marquee>
+</div>
+<br><br>
+
+{% endblock %}

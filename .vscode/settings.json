@@ -1,0 +1,11 @@
+{
+    "editor.fontSize": 18,
+    "terminal.integrated.fontSize": 16,
+    "workbench.colorTheme": "Noctis Bordo",
+    "workbench.iconTheme": "vscode-icons",
+
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint-flask"
+    ]
+}

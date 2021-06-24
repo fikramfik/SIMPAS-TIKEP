@@ -1,0 +1,57 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Rekap Komoditi</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <div class="card">
+          <div class="card-header">
+            <span><i class="bi bi-table me-2"></i></span> Data Komoditi
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="example" class="table table-striped data-table" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nama Komoditi</th>
+                    <th>Satuan</th>
+                    <th>Kategori</th>
+                    <th>Ket</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nama Komoditi</th>
+                    <th>Satuan</th>
+                    <th>Kategori</th>
+                    <th>Ket</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  {% for dtrkomoditi in data%}
+                  <tr>
+                    <td>{{dtrkomoditi.id_komoditi}}</td>
+                    <td>{{dtrkomoditi.nama_komoditi}}</td>
+                    <td>{{dtrkomoditi.satuan}}</td>
+                    <td>{{dtrkomoditi.komoditis.nama_jenis}}</td>
+                    <td>{{dtrkomoditi.ket}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>  
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

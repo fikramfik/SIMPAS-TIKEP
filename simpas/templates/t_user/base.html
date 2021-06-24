@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{url_for('static', filename='s_user/bs5/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='s_user/css/navbar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='s_user/css/body.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='s_user/css/responsive.css')}}">
+
+    <!-- Vendor CSS Files -->
+    <!-- <link href="{{url_for('static', filename='s_user/template1/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='s_user/template1/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='s_user/template1/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='s_user/template1/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='s_user/template1/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='s_user/template1/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='s_user/template1/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet"> -->
+
+    <!-- Template Main CSS File -->
+    <link href="{{url_for('static', filename='s_user/template1/assets/css/style.css')}}" rel="stylesheet">
+
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet"> -->
+
+    <title>Informasi Pasar</title>
+        <!-- Bootstrap core CSS -->
+        <!-- <link href="{{url_for('static', filename='s_user/t1/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"> -->
+
+
+        <!-- Additional CSS Files -->
+        <!-- <link rel="stylesheet" href="{{url_for('static', filename='s_user/t1/assets/css/fontawesome.css')}}"> -->
+        <!-- <link rel="stylesheet" href="{{url_for('static', filename='s_user/t1/assets/css/templatemo-seo-dream.css')}}"> -->
+        <link rel="stylesheet" href="{{url_for('static', filename='s_user/t1/assets/css/animated.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='s_user/t1/assets/css/owl.css')}}">
+  </head>
+  <body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light mt-3 fixed-top" id="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="{{url_for('static', filename='img/logo1.png')}}" height="65px">
+            </a>
+            <a class="navbar-brand ukfont" href="{{url_for('ruser.home')}}">
+                <strong>DISPERINDAGKOP DAN UKM <br> KOTA TIDORE KEPULAUAN</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link  link-navbar tebel-sedang " href="{{url_for('ruser.home')}}">Utama &nbsp;&nbsp;</a>
+                    </li> 
+                    <!-- active bg-active -->
+                    <li class="nav-item">
+                        <a class="nav-link link-navbar tebel-sedang" href="{{url_for('ruser.tentang')}}">Tentang &nbsp;&nbsp;</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link link-navbar tebel-sedang" href="#">Course &nbsp;&nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-navbar tebel-sedang" href="#">Pricing &nbsp;&nbsp;</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link link-navbar tebel-sedang" href="{{url_for('ruser.kontak')}}">Kontak &nbsp;&nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{url_for('ruser.infopasar')}}" class="nav-link bg-custom rounded-pill tebel-sedang shadow" id="btn-sign">INFO PASAR</a>
+                    </li>
+                </ul>
+
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- konten -->
+    {% block konten %}
+    {% endblock %}
+
+    <!-- Scripts -->
+    <script src="{{url_for('static', filename='s_user/t1/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='s_user/t1/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static', filename='s_user/t1/assets/js/owl-carousel.js')}}"></script>
+    <script src="{{url_for('static', filename='s_user/t1/assets/js/animation.js')}}"></script>
+    <script src="{{url_for('static', filename='s_user/t1/assets/js/imagesloaded.js')}}"></script>
+    <script src="{{url_for('static', filename='s_user/t1/assets/js/custom.js')}}"></script>
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="{{url_for('static', filename='s_user/bs5/dist/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='s_user/js/onscroll.js')}}"></script>
+
+    <!-- Vendor JS Files -->
+    <script src="{{url_for('static', filename='s_user/template1/assets/vendor/aos/aos.js')}}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{url_for('static', filename='s_user/template1/assets/js/main.js')}}"></script>
+  </body>
+</html>
