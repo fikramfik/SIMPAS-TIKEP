@@ -1,8 +1,8 @@
 {
     "editor.fontSize": 18,
     "terminal.integrated.fontSize": 16,
-    "workbench.colorTheme": "Noctis Bordo",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Material Theme Ocean",
+    "workbench.iconTheme": "material-icon-theme",
 
     "python.linting.pylintArgs": [
         "--load-plugins",
