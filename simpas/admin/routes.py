@@ -490,3 +490,7 @@ def updateprofil():
         form.nohp.data = current_user.nohp
     return render_template("t_admin/updateprofil.html", form=form)
 # BATAS UPDATE PROFIL
+
+@radmin.route("/tabel")
+def tabel():
+    return render_template("t_admin/tabel.html")
