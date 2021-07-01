@@ -1,0 +1,12 @@
+.marquee-bg{
+    background-color: #F2C166;
+}
+.kontak-card-bg{
+    background-color: #93BF9E;
+}
+.kontak-card-bg1{
+    background-color: #F2C166;
+}
+tr:nth-child(even) {
+    background-color: #F2E6A7;
+}

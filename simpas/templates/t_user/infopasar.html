@@ -5,6 +5,13 @@
 <div class="br">
 
   <br><br><br><br><br>
+  <marquee behavior="" direction="" class="marquee-bg">
+    <p class="pt-2"><strong class="judul1">Jangan sampai ketinggalan Informasi Terbaru
+      dari Bidang Fasilitasi dan Sarana Pasar,
+      Harga dan Stok BAPOKTING Kota Tidore
+      Kepulauan, yang akan di UPDATE SETIAP MINGGU 
+      pada HARI JUMAT.</strong></p>
+  </marquee>
   <div class="card" style="border: none;">
     <img src="{{url_for('static', filename='img/bg-4.png')}}" width="100%" height="1500px" class="">
     <!-- <img src="{{url_for('static', filename='img/bg-2.png')}}" class="img-fluid"> -->
@@ -18,14 +25,14 @@
       <div class="row">
         <div class="col-md-4 mb-3 wow fadeInLeft" data-wow-duration="3s" data-wow-delay="0.5s">
           <div class="table bg-light">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" style="border-color: #F2E6A7;" id="dataTable" width="100%" cellspacing="0">
               <thead>
-                <tr class="bg-info">
+                <tr style="background-color: #F2C166;">
                   <th colspan="5" class="text-center">HARGA BARANG KEBUTUHAN POKOK</th>
                 </tr>
               </thead>
               <thead>
-                <tr class="bg-info">
+                <tr style="background-color: #F2C166;">
                   <th>Jenis Barang</th>
                   <th>Satuan</th>
                   <th colspan="2">Harga Satuan</th>
@@ -42,12 +49,12 @@
                 {% endfor %}
               </tbody>
               <thead>
-                <tr class="bg-info">
+                <tr style="background-color: #F2C166;">
                   <th colspan="5" class="text-center">HARGA HASIL BUMI</th>
                 </tr>
               </thead>
               <thead>
-                <tr class="bg-info">
+                <tr style="background-color: #F2C166;">
                   <th>Jenis Barang</th>
                   <th>Satuan</th>
                   <th colspan="2">Harga Satuan</th>
@@ -64,12 +71,12 @@
                 {% endfor %}
               </tbody>
               <thead>
-                <tr class="bg-info">
+                <tr style="background-color: #F2C166;">
                   <th colspan="5" class="text-center">HARGA BARANG PENTING</th>
                 </tr>
               </thead>
               <thead>
-                <tr class="bg-info">
+                <tr style="background-color: #F2C166;">
                   <th>Jenis Barang</th>
                   <th>Satuan</th>
                   <th colspan="2">Harga Satuan</th>
@@ -90,14 +97,14 @@
         </div>
         <div class="col-md-8 mb-3 wow fadeInRight" data-wow-duration="3s" data-wo-delay="0.5s"">
           <div class="table bg-light table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" style="border-color: #F2E6A7;" id="dataTable" width="100%" cellspacing="0">
               <thead>
-                <tr class="bg-warning">
+                <tr style="background-color: #F2C166;">
                   <th colspan="12" class="text-center">STOK BAPOK</th>
                 </tr>
               </thead>
               <thead>
-                <tr class="bg-warning">
+                <tr style="background-color: #F2C166;">
                   <th>Jenis Barang</th>
                   <th>Pasok Oba (Ton)</th>
                   <th>Pasok Tidore (Ton)</th>
@@ -130,14 +137,14 @@
             </table>
           </div>
           <div class="table bg-light table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" style="border-color: #F2E6A7;" id="dataTable" width="100%" cellspacing="0">
               <thead>
-                <tr class="bg-warning">
+                <tr style="background-color: #F2C166;">
                   <th colspan="12" class="text-center">STOK BARANG PENTING</th>
                 </tr>
               </thead>
               <thead>
-                <tr class="bg-warning">
+                <tr style="background-color: #F2C166;">
                   <th>Jenis Barang</th>
                   <th>Pasok Oba (Ton)</th>
                   <th>Pasok Tidore (Ton)</th>
@@ -170,14 +177,14 @@
             </table>
           </div>
           <div class="table bg-light table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" style="border-color: #F2E6A7;" id="dataTable" width="100%" cellspacing="0">
               <thead>
-                <tr class="bg-warning">
+                <tr style="background-color: #F2C166;">
                   <th colspan="12" class="text-center">STOK HASIL BUMI</th>
                 </tr>
               </thead>
               <thead>
-                <tr class="bg-warning">
+                <tr style="background-color: #F2C166;">
                   <th>Jenis Barang</th>
                   <th>Pasok Oba (Ton)</th>
                   <th>Pasok Tidore (Ton)</th>
@@ -216,17 +223,5 @@
     </div>
   </div>
 </div>
-<br><br><br><br><br><br>
-<br><br><br><br><br><br><br>
-<br><br><br><br><br><br>
-<br><br><br><br><br>
-<div class=" container-fluid bg-warning">
-  <marquee behavior="alternate" direction="">
-      <strong class="judul1">Jangan sampai ketinggalan Informasi Terbaru dari Bidang Fasilitasi dan Sarana Pasar</strong></marquee>
-  <marquee behavior="" direction="">
-      <strong class="judul1">Harga dan Stok BAPOKTING Kota Tidore Kepulauan, yang akan di UPDATE SETIAP MINGGU pada HARI JUMAT</strong>
-  </marquee>
-</div>
-<br><br>
 
 {% endblock %}
