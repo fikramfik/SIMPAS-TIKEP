@@ -1,0 +1,73 @@
+{% extends "t_admin/base.html" %}
+
+{% block konten %}
+
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h4>Rekap Stok BAPOK</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <div class="card">
+          <div class="card-header">
+            <span><i class="bi bi-table me-2"></i></span> Data Stok BAPOK
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="example" class="table table-striped data-table" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>No. HP</th>
+                    <th>Kategori</th>
+                    <th>Komoditi</th>
+                    <th>Stok</th>
+                    <th>Harga Jual</th>
+                    <th colspan="2">Per</th>
+                    <th>Ket</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>No. HP</th>
+                    <th>Kategori</th>
+                    <th>Komoditi</th>
+                    <th>Stok</th>
+                    <th>Harga Jual</th>
+                    <th colspan="2">Per</th>
+                    <th>Ket</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  {% for dtrtawar in data%}
+                  <tr>
+                    <td>{{dtrtawar.id}}</td>
+                    <td>{{dtrtawar.nama}}</td>
+                    <td>{{dtrtawar.alamat}}</td>
+                    <td>{{dtrtawar.nohp}}</td>
+                    <td>{{dtrtawar.tawarkat.nama_jenis}}</td>
+                    <td>{{dtrtawar.tawarkom.nama_komoditi}}</td>
+                    <td>{{dtrtawar.stok}}</td>
+                    <td>{{dtrtawar.harga_jual}}</td>
+                    <td>{{dtrtawar.per}}</td>
+                    <td>{{dtrtawar.tawarkom.satuan}}</td>
+                    <td>{{dtrtawar.ket}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>  
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

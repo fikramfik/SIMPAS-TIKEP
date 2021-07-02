@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request, jsonify
 from simpas.admin.forms import kategoriF, komoditiF, adminF, sistemF, hargakomoditiF, stokbapokF, ekategoriF, ekomoditiF, eadminF, esistemF, ehargakomoditiF, estokbapokF, loginadminF, testF, updateprofilF
-from simpas.models import Thargakomoditi, Tkategori, Tkomoditi, Tsistem, Tstokbapok, Tadmin
+from simpas.models import Thargakomoditi, Tkategori, Tkomoditi, Tsistem, Tstokbapok, Tadmin, Ttawar
 from simpas import db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -490,6 +490,12 @@ def updateprofil():
         form.nohp.data = current_user.nohp
     return render_template("t_admin/updateprofil.html", form=form)
 # BATAS UPDATE PROFIL
+
+@radmin.route("/rekaptawar", methods=['GET'])
+@login_required
+def rekaptawar():
+    data=Ttawar.query.all()
+    return render_template("t_admin/rekaptawar.html", data=data)
 
 @radmin.route("/tabel")
 def tabel():

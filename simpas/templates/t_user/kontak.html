@@ -40,13 +40,220 @@
           </div>
         </div>
       </div> -->
-      <div class="card text-center shadow wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.25s">
-        <div class="card-header kontak-card-bg1">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            {% with messages= get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, massage in messages %}
+      
+                  <div class="alert alert-{{category}} alert-dismissible fade show">
+                    {{massage}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+             {% endif %}
+            {% endwith %}
+          </div>
         </div>
-        <div class="card-body kontak-card-bg">
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="card bg-light rounded-pill wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.25s">
+      </div>
+      <div class="row g-2">
+        <div class="col-md">
+          <div class="card shadow">
+            <div class="card-header kontak-card-bg1 text-center">
+              <h3>Tawaran</h3>
+            </div>
+            <div class="card-body kontak-card-bg">
+                  <form method="POST" name="form">
+                    {{form.hidden_tag()}}
+                    <div class="form-group">
+                        {{form.nama.label(class="form-control-label")}}
+                        {% if form.nama.errors %}
+                            {{form.nama(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.nama.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.nama(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.alamat.label(class="form-control-label")}}
+                        {% if form.alamat.errors %}
+                            {{form.alamat(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.alamat.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.alamat(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.nohp.label(class="form-control-label")}}
+                        {% if form.nohp.errors %}
+                            {{form.nohp(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.nohp.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.nohp(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.kategoriid.label(class="form-control-label")}}
+                        {% if form.kategoriid.errors %}
+                            {{form.kategoriid(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.kategoriid.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.kategoriid(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group">
+                        {{form.komoditiid.label(class="form-control-label")}}
+                        {% if form.komoditiid.errors %}
+                            {{form.komoditiid(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.komoditiid.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.komoditiid(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="row g-4">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            {{form.stok.label(class="form-control-label")}}
+                            {% if form.stok.errors %}
+                                {{form.stok(class="form-control is-invalid")}}
+                                <div class="invalid-feedback">
+                                    {%for error in form.stok.errors %}
+                                    <span>{{error}}</span>
+                                    {% endfor %}
+                                </div>
+                            {%else%}
+                                {{form.stok(class="form-control")}}
+                            {%endif%}
+                        </div>
+                      </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{form.harga_jual.label(class="form-control-label")}}
+                                {% if form.harga_jual.errors %}
+                                    {{form.harga_jual(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.harga_jual.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.harga_jual(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                {{form.per.label(class="form-control-label")}}
+                                {% if form.per.errors %}
+                                    {{form.per(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.per.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.per(class="form-control")}}
+                                {%endif%}
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                {{form.sat.label(class="form-control-label text-white")}}
+                                {% if form.sat.errors %}
+                                    {{form.sat(class="form-control is-invalid")}}
+                                    <div class="invalid-feedback">
+                                        {%for error in form.sat.errors %}
+                                        <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {%else%}
+                                    {{form.sat(class="form-control", disabled=True)}}
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-5">
+                        {{form.ket.label(class="form-control-label")}}
+                        {% if form.ket.errors %}
+                            {{form.ket(class="form-control is-invalid")}}
+                            <div class="invalid-feedback">
+                                {%for error in form.ket.errors %}
+                                <span>{{error}}</span>
+                                {% endfor %}
+                            </div>
+                        {%else%}
+                            {{form.ket(class="form-control")}}
+                        {%endif%}
+                    </div>
+                    <div class="form-group d-grid col-4 mx-auto">
+                        {{form.submit(class="btn btn-primary")}}
+                    </div>
+                    <br>
+                </form>
+                <script>
+                  kategori_select = document.getElementById('kategoriid');
+                  komoditi_select = document.getElementById('komoditiid');
+                  sat_select = document.getElementById('sat');
+              
+                  kategori_select.onclick = function() {
+                      kategori = kategori_select.value;
+                      fetch('/stokkom/' + kategori).then(function(response) {
+                          response.json().then(function(data) {
+                              optionHTML = '';
+                              for (komoditi of data.komoditikategori) {
+                                  optionHTML += '<option value="' + komoditi.id_komoditi +'">' + komoditi.nama_komoditi + '</option>'
+                              }
+                              komoditi_select.innerHTML = optionHTML;
+                          });
+                      });
+                  }
+                  
+                  komoditi_select.onclick = function() {
+                      satuan = komoditi_select.value;
+                      fetch('/stokkomsat/' + satuan).then(function(response) {
+                          response.json().then(function(data) {
+                              optionHTML = '';
+                              for (komoditi of data.komoditisatuan) {
+                                  optionHTML += '<option value="' + komoditi.id_komoditi +'">' + komoditi.satuan + '</option>'
+                              }
+                              sat_select.innerHTML = optionHTML;
+                          });
+                      });
+                  }
+              </script>
+            </div>
+            <div class="card-footer text-muted kontak-card-bg1">
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card text-center shadow">
+            <div class="card-header kontak-card-bg1 text-center">
+              <h3>Kontak</h3>
+            </div>
+            <div class="card-body kontak-card-bg">
+              <div class="card bg-light rounded-pill">
                 <div class="card-body">
                   <br>
                   <div class="icon">
@@ -54,11 +261,10 @@
                   </div>
                   <br><br>
                   <h5 class="card-title judul1">dinasperindagkoptidore@gmail.com</h5>
-                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="card bg-light rounded-pill wow fadeInUp" data-wow-duration="3s" data-wow-delay="0.25s">
+              <br>
+              <div class="card bg-light rounded-pill">
                 <div class="card-body">
                   <br>
                   <div class="icon">
@@ -66,11 +272,10 @@
                   </div>
                   <br><br>
                   <h5 class="card-title judul1">(0821) 3161022</h5>
-                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="card bg-light rounded-pill wow fadeInUp" data-wow-duration="4s" data-wow-delay="0.25s">
+              <br>
+              <div class="card bg-light rounded-pill">
                 <div class="card-body">
                   <br>
                   <div class="icon">
@@ -78,14 +283,14 @@
                   </div>
                   <br><br>
                   <h5 class="card-title judul1">Kota Tidore Kepulauan</h5>
-                 </div>
+                </div>
               </div>
+            </div>
+            <div class="card-footer text-muted kontak-card-bg1">
             </div>
           </div>
         </div>
-        <div class="card-footer text-muted kontak-card-bg1">
-        </div>
       </div>
     </div>
-
+    
 {% endblock %}

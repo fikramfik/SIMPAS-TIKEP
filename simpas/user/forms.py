@@ -12,5 +12,6 @@ class tawarF(FlaskForm):
     harga_jual = StringField('Harga Jual', validators=[DataRequired()])
     per = StringField('Per', validators=[DataRequired()])
     sat = SelectField('', choices=[], validate_choice=False)
+    stok = StringField('Stok', validators=[DataRequired()])
     ket = TextAreaField('Ket')
     submit = SubmitField('Kirim')

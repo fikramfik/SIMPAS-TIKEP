@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
+from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request, jsonify
 from simpas.models import Thargakomoditi, Tkategori, Tkomoditi, Tsistem, Tstokbapok, Ttawar
 from simpas.user.forms import tawarF
 from simpas import db
@@ -24,6 +24,28 @@ def kontak():
         flash('Data berhasil dikirim','success')
         return redirect(url_for('ruser.kontak'))
     return render_template("t_user/kontak.html", form=form)
+
+@ruser.route("/stokkom/<get_komoditi>")
+def dtstokkom(get_komoditi):
+    komoditi = Tkomoditi.query.filter_by(kategori_id=get_komoditi).all()
+    komoditiArray = []
+    for komoditi in komoditi:
+        komoditiObj = {}
+        komoditiObj['id_komoditi'] = komoditi.id_komoditi
+        komoditiObj['nama_komoditi'] = komoditi.nama_komoditi
+        komoditiArray.append(komoditiObj)
+    return jsonify({'komoditikategori' : komoditiArray})
+
+@ruser.route("/stokkomsat/<get_satuan>")
+def dtstokkomsat(get_satuan):
+    satuan = Tkomoditi.query.filter_by(id_komoditi=get_satuan).all()
+    satuanArray = []
+    for komoditi in satuan:
+        satuanObj = {}
+        satuanObj['id_komoditi'] = komoditi.id_komoditi
+        satuanObj['satuan'] = komoditi.satuan
+        satuanArray.append(satuanObj)
+    return jsonify({'komoditisatuan' : satuanArray})
 
 @ruser.route("/infopasar")
 def infopasar():
