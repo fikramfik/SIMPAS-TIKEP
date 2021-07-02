@@ -426,7 +426,6 @@ def rekapstokbapok():
     return render_template("t_admin/rekapstokbapok.html", data=data)
 
 @radmin.route("/stokkom/<get_komoditi>")
-@login_required
 def dtstokkom(get_komoditi):
     komoditi = Tkomoditi.query.filter_by(kategori_id=get_komoditi).all()
     komoditiArray = []
@@ -438,7 +437,6 @@ def dtstokkom(get_komoditi):
     return jsonify({'komoditikategori' : komoditiArray})
 
 @radmin.route("/stokkomsat/<get_satuan>")
-@login_required
 def dtstokkomsat(get_satuan):
     satuan = Tkomoditi.query.filter_by(id_komoditi=get_satuan).all()
     satuanArray = []
