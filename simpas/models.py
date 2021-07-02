@@ -23,6 +23,7 @@ class Tkategori(db.Model):
     komoditis = db.relationship('Tkomoditi', backref='komoditis', lazy=True)
     h_komoditis = db.relationship('Thargakomoditi', backref='hkategori', lazy=True)
     s_bapoks = db.relationship('Tstokbapok', backref='skategori', lazy=True)
+    tawarkat = db.relationship('Ttawar', backref='tawarkat', lazy=True)
 
     def __repr__(self):
         return f"T_kategori('{self.nama_jenis}', '{self.ket}')"
@@ -35,6 +36,7 @@ class Tkomoditi(db.Model):
     ket = db.Column(db.String(20))
     harga_komoditis = db.relationship('Thargakomoditi', backref='hkomoditi', lazy=True)
     stok_bapoks = db.relationship('Tstokbapok', backref='skomoditi', lazy=True)
+    tawarkom = db.relationship('Ttawar', backref='tawarkom', lazy=True)
 
     def __repr__(self):
         return f"Tkomoditi('{self.nama_komoditi}', '{self.satuan}', '{self.ket}')"
@@ -81,3 +83,15 @@ class Tsistem(db.Model):
 
     def __repr__(self):
         return f"Tsistem('{self.tahun}', '{self.bulan}', '{self.bulan}', '{self.minggu}')"
+
+class Ttawar(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nama = db.Column(db.String(25), nullable=False)
+    alamat = db.Column(db.String(20), nullable=False)
+    nohp = db.Column(db.String(13), nullable=False)
+    harga_jual = db.Column(db.String(15), nullable=False)
+    per = db.Column(db.String(5))
+    stok = db.Column(db.String(15), nullable=False)
+    ket = db.Column(db.String(20))
+    skomoditi_id = db.Column(db.Integer, db.ForeignKey('tkomoditi.id_komoditi'))
+    skategori_id = db.Column(db.Integer, db.ForeignKey('tkategori.id_kategori'))

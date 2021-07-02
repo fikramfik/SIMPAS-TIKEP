@@ -1,5 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
-from simpas.models import Thargakomoditi, Tkategori, Tkomoditi, Tsistem, Tstokbapok
+from simpas.models import Thargakomoditi, Tkategori, Tkomoditi, Tsistem, Tstokbapok, Ttawar
+from simpas.user.forms import tawarF
+from simpas import db
 
 ruser = Blueprint('ruser',__name__)
 
@@ -11,9 +13,17 @@ def home():
 def tentang():
     return render_template("t_user/tentang.html")
 
-@ruser.route("/kontak")
+@ruser.route("/kontak", methods=['GET', 'POST'])
 def kontak():
-    return render_template("t_user/kontak.html")
+    form = tawarF()
+    form.kategoriid.choices = [(str(tkategori.id_kategori), tkategori.nama_jenis) for tkategori in Tkategori.query.all()]
+    if form.validate_on_submit():
+        add = Ttawar(per=form.per.data, nama=form.nama.data, alamat=form.alamat.data, nohp=form.nohp.data, skomoditi_id=form.komoditiid.data, skategori_id=form.kategoriid.data, harga_jual=form.harga_jual.data, stok=form.stok.data, ket=form.ket.data)
+        db.session.add(add)
+        db.session.commit()
+        flash('Data berhasil dikirim','success')
+        return redirect(url_for('ruser.kontak'))
+    return render_template("t_user/kontak.html", form=form)
 
 @ruser.route("/infopasar")
 def infopasar():
@@ -30,3 +40,4 @@ def infopasar():
     infostokbp = Tstokbapok.query.filter_by(tahun=str(s.tahun), bulan=str(s.bulan), minggu=str(s.minggu), skategori_id=2).all()
     
     return render_template("t_user/infopasar.html", data_sistem=data_sistem, infohargakp=infohargakp, infostokkp=infostokkp, infohargahb=infohargahb, infohargabp=infohargabp, infostokhb=infostokhb, infostokbp=infostokbp)
+
